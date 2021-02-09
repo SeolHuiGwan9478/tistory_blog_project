@@ -1,0 +1,48 @@
+{% extends '_base.html' %} {% block contents %}
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12">
+      <form method="POST" action="{% url 'post_write' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="title">제목</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            placeholder="제목을 입력해주세요."
+            name="title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="content">내용</label>
+          <input
+            type="text"
+            class="form-control"
+            id="content"
+            placeholder="내용을 입력해주세요."
+            name="content"
+          />
+        </div>
+        <div class="form-group">
+          <label for="image">사진첨부</label>
+          <input
+            type="file"
+            class="form-control"
+            id="image"
+            placeholder="제목을 입력해주세요."
+            name="image"
+          />
+        </div>
+        {% if errors %} {% for error in errors %}
+        <span style="color: blue">{{ error }}</span>
+        <br />
+        {% endfor %} {% endif %}
+        <button type="submit" class="btn btn-primary" style="margin-top: 10">
+          저장하기
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
