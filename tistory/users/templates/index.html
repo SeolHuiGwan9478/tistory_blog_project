@@ -1,0 +1,52 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block header %}
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: "Gugi", cursive;
+  }
+  .navbar {
+    padding: 20px 30px;
+    margin-bottom: 0;
+  }
+  .navbar img {
+    height: 30px;
+  }
+  .navbar ul {
+    float: right;
+    margin: 0;
+  }
+  .navbar li {
+    list-style: none;
+    font-size: 13px;
+    font-weight: bold;
+    margin-left: 30px;
+    float: left;
+  }
+  .navbar li a {
+    text-decoration: none;
+    color: #545454;
+  }
+  .content1 {
+    background-color: rgb(204, 204, 255);
+    color: white;
+    padding: 150px;
+  }
+  .content1 h1 {
+    text-align: center;
+  }
+</style>
+{% endblock %} {% block contents %}
+<div class="navbar">
+  <a href="#"><img src="{% static 'img/navbar_img.jpg' %}" /></a>
+  <ul>
+    <li><a href="/user/register">Register</a></li>
+    <li><a href="/user/login">Login</a></li>
+    <li><a href="/user/logout">Logout</a></li>
+  </ul>
+</div>
+<div class="content1">
+  <h1>HuiGwan's Blog</h1>
+</div>
+{% endblock %}
