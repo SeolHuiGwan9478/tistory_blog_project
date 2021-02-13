@@ -1,5 +1,6 @@
 {% extends '_base.html' %} 
 {% load static %}
+{% load social_share %}
 {% block header %}
 <link href="{% static 'css/style.css' %}" rel="stylesheet">
 {% endblock %}
@@ -14,6 +15,36 @@
                 <hr>
             {% endif %}
             <p>{{ post.content }}</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6 col-md-10 mx-auto">
+            {% for tag in post.tags.all %}
+                <span class="badge badge-dark">#{{tag.name}}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row" style="margin: 20px ;">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <button type="button" class="btn btn-light float-right">
+                {% post_to_facebook post.get_absolute_url "facebook" %}
+            </button>
+        </div>
+    </div>
+    <div class="row" style="margin: 20px ;">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <button type="button" class="btn btn-light float-right">
+                {% post_to_twitter post.get_absolute_url "twitter" %}
+            </button>
+        </div>
+    </div>
+    <div class="row" style="margin: 20px ;">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <button type="button" class="btn btn-light float-right">
+                {% send_email "{{post.title}} 읽어보세요!" post.get_absolute_url "email" %}
+            </button>
         </div>
     </div>
 </div>

@@ -11,27 +11,11 @@ def posts_list(request):
     return render(request, 'posts_list.html', context={'posts':posts})
 
 def post_detail(request, post_id):
-    user = User.objects.get(email=(request.session.get('user')))
     post = get_object_or_404(Post, pk=post_id)
     comment = Comment.objects.filter(post=post_id)
-    is_liked = False
 
-    if post.likes.filter(id=user.id).exists():
-        is_liked = True
+    return render(request, 'post_detail.html', context={'post':post, 'comments': comment})
 
-    return render(request, 'post_detail.html', context={'post':post, 'comments': comment, 'is_liked':is_liked, 'total_likes': post.total_likes()})
-
-def post_like(request):
-    post = get_object_or_404(Post, id=request.POST.get('post_id'))
-    user = User.objects.get(email=(request.session.get('user')))
-    is_liked = post.likes.filter(id=user.id).exists()
-
-    if is_liked:
-        post.likes.remove(user)
-    else:
-        post.likes.add(user)
-
-    return HttpResponseRedirect(reverse('post_detail', kwargs={'post_id': post.id}))
 @login_required
 def post_write(request):
     errors = []
