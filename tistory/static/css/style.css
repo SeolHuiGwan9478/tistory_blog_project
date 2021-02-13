@@ -1,0 +1,16 @@
+.user_name{
+    font-size:14px;
+    font-weight: bold;
+}
+.comments-list .media{
+    border-bottom: 1px dotted #ccc;
+}
+
+.comment-bg{
+    background-color:rgb(255, 204, 234);
+}
+
+.media{
+    padding-top:20px;
+    padding-bottom:20px;
+}

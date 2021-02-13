@@ -1,4 +1,8 @@
 {% extends '_base.html' %} 
+{% load static %}
+{% block header %}
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+{% endblock %}
 {% block contents %}
 <div class="container">
     <div class="row">
@@ -10,6 +14,50 @@
                 <hr>
             {% endif %}
             <p>{{ post.content }}</p>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 comment-bg">
+            <div class="page-header">
+                <h1>Comments</h1>
+            </div>
+            <div class="comments-list">
+                {% for comment in comments %}
+                <div class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading user_name">
+                            {{ comment.user }}
+                        </h4>
+                        {{ comment.content }}
+                        <hr>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="container">
+                <div class="row">
+                    {% if errors %}
+                    <ul>
+                        {% for error in errors %}
+                        <li><div>{{ errors }}</div></li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    <h3>댓글 쓰기</h3>
+                    <form method="POST" action="{% url 'comment_write' %}" enctype="multipart/form-data" class="col-lg-8 col-md-10 mx-auto">
+                        {% csrf_token %}
+                        <input type="hidden" name="post_id" value="{{ post.id }}">
+                        <div class="form-group row">
+                            <textarea class="form-control" name="content" rows="7"></textarea>
+                        </div>
+                        <div class="form-group row float-right">
+                            <button type="submit" class="btn btn-primary">저장하기</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
