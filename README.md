@@ -2,7 +2,7 @@
 ## 첫 번째 프로젝트 블로그 만들기
 
 #### main_page
-![main]((https://user-images.githubusercontent.com/67581495/107843560-86333600-6e0f-11eb-94e9-509b4d7d277d.JPG))
+![main]((https://user-images.githubusercontent.com/67581495/107843560-86333600-6e0f-11eb-94e9-509b4d7d277d.JPG)
 
 #### add login function
 ![login](https://user-images.githubusercontent.com/67581495/107843727-c1823480-6e10-11eb-9fac-8ce5ed97fcff.JPG)
